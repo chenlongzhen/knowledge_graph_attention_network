@@ -238,8 +238,8 @@ if __name__ == '__main__':
         for idx in range(n_batch):
             btime= time()
 
-            batch_data = data_generator.generate_train_batch()
-            feed_dict = data_generator.generate_train_feed_dict(model, batch_data)
+            batch_data = data_generator.generate_train_batch() # {'users': [6049, 21052, 8421], 'pos_items': [27, 5693, 24409], 'neg_items': [26994, 12069, 37054]}
+            feed_dict = data_generator.generate_train_feed_dict(model, batch_data) # {<tf.Tensor 'Placeholder:0' shape=(?,) dtype=int32>: [6049, 21052, 8421], <tf.Tensor 'Placeholder_1:0' shape=(?,) dtype=int32>: [27, 5693, 24409], <tf.Tensor 'Placeholder_2:0' shape=(?,) dtype=int32>: [26994, 12069, 37054], <tf.Tensor 'Placeholder_4:0' shape=(?,) dtype=float32>: [0.1, 0.1, 0.1], <tf.Tensor 'Placeholder_3:0' shape=(?,) dtype=float32>: [0.1]}
 
             _, batch_loss, batch_base_loss, batch_kge_loss, batch_reg_loss = model.train(sess, feed_dict=feed_dict)
 

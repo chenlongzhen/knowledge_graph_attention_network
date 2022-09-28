@@ -229,7 +229,7 @@ class KGAT_loader(Data):
         return heads, pos_r_batch, pos_t_batch, neg_t_batch
 
     def generate_train_batch(self):
-        users, pos_items, neg_items = self._generate_train_cf_batch()
+        users, pos_items, neg_items = self._generate_train_cf_batch() # batchsize 个user positem 和negitem
 
         batch_data = {}
         batch_data['users'] = users

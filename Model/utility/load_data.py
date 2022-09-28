@@ -101,10 +101,10 @@ class Data(object):
             users = [rd.choice(self.exist_users) for _ in range(self.batch_size)]
 
         def sample_pos_items_for_u(u, num):
-            pos_items = self.train_user_dict[u]
+            pos_items = self.train_user_dict[u] # 用户关联的items
             n_pos_items = len(pos_items)
             pos_batch = []
-            while True:
+            while True: # 随机采样到num
                 if len(pos_batch) == num: break
                 pos_id = np.random.randint(low=0, high=n_pos_items, size=1)[0]
                 pos_i_id = pos_items[pos_id]
@@ -115,7 +115,7 @@ class Data(object):
 
         def sample_neg_items_for_u(u, num):
             neg_items = []
-            while True:
+            while True: # 全局负采样到num个
                 if len(neg_items) == num: break
                 neg_i_id = np.random.randint(low=0, high=self.n_items,size=1)[0]
 
